@@ -56,9 +56,15 @@
 import loadUsers, { grabApple, clearApples, mapUsers, checkAnyUserHasApple } from '../lib/users.service';
 import { getMessageFromApiError } from '../lib/http';
 import loadBasket, { mapApples } from '../lib/basket.service';
+import UserListItem from './UserListItem';
+import BasketListItem from './BasketListItem';
 
 export default {
   name: 'AppleGrab',
+  components: {
+    UserListItem,
+    BasketListItem,
+  },
   created() {
     this.loadBasketAndUsers();
   },
@@ -140,15 +146,15 @@ export default {
 h1 {
   font-weight: normal;
   text-align: left;
-  padding: 0 16px;
+  padding: 0 calc(var(--base-grid-unit) * 2);
 }
 
 .toolbar {
-  padding: 0 16px;
+  padding: 0 calc(var(--base-grid-unit) * 2);
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #f3f3f3;
-  padding-bottom: 8px;
+  padding-bottom: var(--base-grid-unit);
 }
 
 .actions, .toolbar {
@@ -162,6 +168,6 @@ h1 {
 
 .row .column {
   flex: 1;
-  padding-right: 30px;
+  padding-right: calc(var(--base-grid-unit) * 5);
 }
 </style>

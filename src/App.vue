@@ -23,4 +23,11 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+:root {
+  --primary-color: #5991ff;
+  --primary-mutted-color: #bdd3ff;
+  --default-mutted-color: #f2f3f7;
+  --base-grid-unit: 8px;
+}
 </style>

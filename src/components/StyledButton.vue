@@ -12,30 +12,30 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .styled-button {
-    color: #5991ff;
+    color: var(--primary-color);
     height: 30px;
     border: 1px solid currentColor;
     cursor: pointer;
   }
   .styled-button[disabled] {
-    background-color: #f2f3f7;
+    background-color: var(--default-mutted-color);
     cursor: default;
   }
   .styled-button:focus {
     outline: none;
   }
   .styled-button:hover {
-    background-color: #ebf2ff;
+    background-color: var(--default-mutted-color);
   }
   .styled-button.primary {
-    background-color: #5991ff;
+    background-color: var(--primary-color);
     border: none;
     color: #fff;
   }
   .styled-button.primary:hover {
-    background-color: #bdd3ff;
+    background-color: var(--primary-mutted-color);
   }
   .styled-button.primary[disabled] {
-    background-color: #bdd3ff;
+    background-color: var(--primary-mutted-color);
   }
 </style>

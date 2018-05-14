@@ -37,7 +37,11 @@ If you need to setup custom static directory change assetsSubDirectory in [confi
 npm run build
 ```
 
+Then take content of [dist](/dist) and bring it into public section of you backend.
+
 ## Shared components
+
+There are some useful component at [shared components](/src/sharedComponents) which may help you solve common tasks.
 
 ### ItemsList
 
@@ -98,3 +102,6 @@ You can pass any component as a list item of this list. So ItemsList takes respo
 ```
   <Loader v-if="isLoading" />
 ```
+
+## Theme
+In [app.vue](/src/App.vue) you can find some color variables, please feel free to change them. Not the best place to keep variables, but there are not much of them.

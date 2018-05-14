@@ -11,7 +11,7 @@
     background-color: #ffebe0;
     color: #a33800;
     font-size: 12px;
-    padding: 0 8px;
+    padding: 0 var(--base-grid-unit);
     border-radius: 2px;
     text-align: left;
     display: flex;

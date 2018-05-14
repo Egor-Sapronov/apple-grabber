@@ -10,12 +10,12 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #7eb4ff;
-  background: -moz-linear-gradient(left, #7eb4ff 10%, rgba(126,180,255, 0) 42%);
-  background: -webkit-linear-gradient(left, #7eb4ff 10%, rgba(126,180,255, 0) 42%);
-  background: -o-linear-gradient(left, #7eb4ff 10%, rgba(126,180,255, 0) 42%);
-  background: -ms-linear-gradient(left, #7eb4ff 10%, rgba(126,180,255, 0) 42%);
-  background: linear-gradient(to right, #7eb4ff 10%, rgba(126,180,255, 0) 42%);
+  background: var(--primary-color);;
+  background: -moz-linear-gradient(left, var(--primary-color), 10%, rgba(126,180,255, 0) 42%);
+  background: -webkit-linear-gradient(left, var(--primary-color), 10%, rgba(126,180,255, 0) 42%);
+  background: -o-linear-gradient(left, var(--primary-color), 10%, rgba(126,180,255, 0) 42%);
+  background: -ms-linear-gradient(left, var(--primary-color), 10%, rgba(126,180,255, 0) 42%);
+  background: linear-gradient(to right, var(--primary-color), 10%, rgba(126,180,255, 0) 42%);
   position: relative;
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
@@ -26,7 +26,7 @@
 .loader:before {
   width: 50%;
   height: 50%;
-  background: #7eb4ff;
+  background: var(--primary-color);;
   border-radius: 100% 0 0 0;
   position: absolute;
   top: 0;
