@@ -45,7 +45,7 @@ There are some useful component at [shared components](/src/sharedComponents) wh
 
 ### ItemsList
 
-[ItemsList](/src/components/ItemsList.vue) — is a generic way of displaying scrollable list content.
+[ItemsList](/src/components/shared/ItemsList.vue) — is a generic way of displaying scrollable list content.
 You can pass any component as a list item of this list. So ItemsList takes responsibility only for scroll and iteration over elements and you can display items as you want.
 
 ```
@@ -64,7 +64,7 @@ You can pass any component as a list item of this list. So ItemsList takes respo
 
 ### StyledButton
 
-[StyledButton](/src/components/StyledButton.vue) — just basic button themed with brand colors. It can be transparent and bordered by default or colored if 'primary' passed into the color property.
+[StyledButton](/src/components/shared/StyledButton.vue) — just basic button themed with brand colors. It can be transparent and bordered by default or colored if 'primary' passed into the color property.
 
 ```
 <StyledButton
@@ -77,7 +77,7 @@ You can pass any component as a list item of this list. So ItemsList takes respo
 ```
 
 ### ScrollWrapper
-[ScrollWrapper](/src/components/ScrollWrapper.vue) — wraps child content in scrollable section with fixed height.
+[ScrollWrapper](/src/components/shared/ScrollWrapper.vue) — wraps child content in scrollable section with fixed height.
 
 ```
 <ScrollWrapper :height="600">
@@ -86,7 +86,7 @@ You can pass any component as a list item of this list. So ItemsList takes respo
 ```
 
 ### ErrorMessage
-[ErrorMessage](/src/components/ErrorMessage.vue) — wraps error into nice warning component.
+[ErrorMessage](/src/components/shared/ErrorMessage.vue) — wraps error into nice warning component.
 
 ```
 <ErrorMessage
@@ -97,7 +97,7 @@ You can pass any component as a list item of this list. So ItemsList takes respo
 ```
 
 ### Loader
-[Loader](/src/components/ErrorMessage.vue) — use it when you need to address that something is happening now and app is not broken.
+[Loader](/src/components/shared/ErrorMessage.vue) — use it when you need to address that something is happening now and app is not broken.
 
 ```
   <Loader v-if="isLoading" />
