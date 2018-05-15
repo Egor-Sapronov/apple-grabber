@@ -1,26 +1,14 @@
 <template>
   <div>
-    <h1>Apple grabber</h1>
-    <div class="row toolbar">
-      <div class="loader-wrapper">
-        <Loader v-if="isLoading" />
-      </div>
-      <div class="row actions">
-        <ErrorMessage
-          v-if="error"
-          class="error-message"
-        >
-          {{ error }}
-        </ErrorMessage>
-        <StyledButton
-          color="primary"
-          :disabled="!canClearApples"
-          @click="onClearApples"
-        >
-          Clear apples
-        </StyledButton>
-      </div>
-    </div>
+    <header>
+      <h1>Apple grabber</h1>
+    </header>
+    <AppToolbar
+      :error="error"
+      :isLoading="isLoading"
+      :isActionDisabled="!canClearApples"
+      @clear-apples="onClearApples"
+    />
     <div class="row">
       <ItemsList
         class="column"
@@ -58,12 +46,14 @@ import { getMessageFromApiError } from '../lib/http';
 import loadBasket, { mapApples } from '../lib/basket.service';
 import UserListItem from './UserListItem';
 import BasketListItem from './BasketListItem';
+import AppToolbar from './AppToolbar';
 
 export default {
   name: 'AppleGrab',
   components: {
     UserListItem,
     BasketListItem,
+    AppToolbar,
   },
   created() {
     this.loadBasketAndUsers();
@@ -91,8 +81,9 @@ export default {
 
       clearApples()
         .then(() => this.loadBasketAndUsers())
-        .then((ErrorMessage) => {
-          this.error = ErrorMessage;
+        .catch((error) => {
+          this.isLoading = false;
+          this.error = error.message;
         });
     },
     onGrabApple(userId) {
@@ -100,24 +91,20 @@ export default {
       this.isLoading = true;
 
       grabApple(userId)
-        .then(() => {
-          this.loadBasketAndUsers();
-        })
+        .then(() => this.loadBasketAndUsers())
         .catch((error) => {
-          this.error = error.message;
           this.isLoading = false;
+          this.error = error.message;
         });
     },
     loadBasket() {
-      return loadBasket()
-        .then(mapApples)
+      return loadBasket().then(mapApples)
         .then((apples) => {
           this.apples = apples;
         });
     },
     loadUsers() {
-      return loadUsers()
-        .then(mapUsers)
+      return loadUsers().then(mapUsers)
         .then((users) => {
           this.users = users;
         });
@@ -133,8 +120,9 @@ export default {
           this.isLoading = false;
         })
         .catch(getMessageFromApiError)
-        .then((ErrorMessage) => {
-          this.error = ErrorMessage;
+        .then((errorMessage) => {
+          this.isLoading = false;
+          this.error = errorMessage;
         });
     },
   },
@@ -147,18 +135,6 @@ h1 {
   font-weight: normal;
   text-align: left;
   padding: 0 calc(var(--base-grid-unit) * 2);
-}
-
-.toolbar {
-  padding: 0 calc(var(--base-grid-unit) * 2);
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #f3f3f3;
-  padding-bottom: var(--base-grid-unit);
-}
-
-.actions, .toolbar {
-  height: 30px;
 }
 
 .row {
