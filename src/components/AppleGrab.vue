@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import loadUsers, { grabApple, clearApples, mapUsers, checkAnyUserHasApple } from '../lib/users.service';
+import { grabApple, clearApples, checkAnyUserHasApple, getMappedUsers } from '../lib/users.service';
 import { getMessageFromApiError } from '../lib/http';
-import loadBasket, { mapApples } from '../lib/basket.service';
+import { getMappedApples } from '../lib/basket.service';
 import UserListItem from './UserListItem';
 import BasketListItem from './BasketListItem';
 import AppToolbar from './AppToolbar';
@@ -97,26 +97,16 @@ export default {
           this.error = error.message;
         });
     },
-    loadBasket() {
-      return loadBasket().then(mapApples)
-        .then((apples) => {
-          this.apples = apples;
-        });
-    },
-    loadUsers() {
-      return loadUsers().then(mapUsers)
-        .then((users) => {
-          this.users = users;
-        });
-    },
     loadBasketAndUsers() {
       this.isLoading = true;
 
       return Promise.all([
-        this.loadBasket(),
-        this.loadUsers(),
+        getMappedUsers(),
+        getMappedApples(),
       ])
-        .then(() => {
+        .then(([users, apples]) => {
+          this.users = users;
+          this.apples = apples;
           this.isLoading = false;
         })
         .catch(getMessageFromApiError)

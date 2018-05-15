@@ -30,3 +30,8 @@ export function checkAnyUserHasApple(users) {
     ...user.apples,
   ], []).length > 0;
 }
+
+export function getMappedUsers() {
+  return loadUsers()
+    .then(mapUsers);
+}

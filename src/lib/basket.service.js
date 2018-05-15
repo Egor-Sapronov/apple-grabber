@@ -11,3 +11,8 @@ export function mapApples(apples) {
     text: name,
   }));
 }
+
+export function getMappedApples() {
+  return loadBasket()
+    .then(mapApples);
+}
